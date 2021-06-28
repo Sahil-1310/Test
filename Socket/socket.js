@@ -51,6 +51,10 @@ io.on('connection', (socket) => {
         const edit = await mongodblib.deletedCommBYAuthor(data);
         /** updated comment when author deleted */
         socket.emit("updated", edit);
-    })
+    });
+   
+   socket.on('disconnect', () => {
+        console.log('A user disconnected: ', socket.id);
+    });
 
 })
